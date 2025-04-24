@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 import numpy as np # For matrix operations
 from math import sin, cos
+import random
 # Initialize Pygame
 pg.init()
 
@@ -23,6 +24,11 @@ camera = [100, 0, 0] # koordinater for kamera [x, y, z]
 roll = 0 # rotation for x-axis
 pitch = 0 # rotation for y-axis
 yaw = 0 # rotation for z-axis
+
+
+
+
+
 
 cube_matrix = np.array([
     [-0.5, -0.5, -0.5],  # 0: Bottom-back-left
@@ -181,7 +187,8 @@ while running:
     screen.fill(BLACK)
 
     drawPoints(a, screen)
-
+    pg.draw.polygon(screen, BLUE, a)
+    a = random.shuffle(a)
     # Flip the display
     pg.display.flip()
 
