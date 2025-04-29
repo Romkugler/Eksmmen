@@ -193,9 +193,9 @@ def centerObject(polygons, screenWidth = 800, screenHeight = 600):
     centerY = screenWidth / 2
     centerZ = screenHeight / 2
     for polygon in polygons:
-        for p in polygon:  # Iterate over each point in the polygon
-            p[0] += centerY
-            p[1] += centerZ
+        for point in polygon.points:  # Iterate over each point in the polygon
+            point[0] += centerY
+            point[1] += centerZ
     return polygons
 
 def drawPolygons(polygons, screen):
@@ -252,7 +252,7 @@ while running:
     all_polygons_sorted = sortPoltgons(all_polygons, camera)
     all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
     
-    centerObject(all_polygons_2D, screenWidth, screenHeight) # center the object on the screen
+    centerObject(all_polygons_2D, screenWidth, screenHeight) 
 
     print("Camera:", camera)
 
