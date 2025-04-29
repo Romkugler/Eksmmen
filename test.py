@@ -36,25 +36,30 @@ screenWidth = 800
 screenHeight = 600
 
 # Colors
+BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-BLACK = (0, 0, 0)
+YELLOW = (255, 255, 0)
+PURPLE = (255, 0, 255)
+ORANGE = (255, 165, 0)
 colors = []
-for i in range(10):
-    color = [random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)]
+for i in range(6):
+    color = [255/(i+1), 255/(i+1), 255/(i+1)]
     colors.append(color)
+colors.reverse()
 
 
 
 # Variables for the cube
 plan = [1, 0, 0, 0] # lignigen for plan [a, b, c, k] ax+by+cz+k=0
-camera = [100, 0, 0] # koordinater for kamera [x, y, z]
+fov = 500
+camera = [fov, 0, 0] # koordinater for kamera [x, y, z]
 roll = 0 # rotation for x-axis
 pitch = 0 # rotation for y-axis
 yaw = 0 # rotation for z-axis
-skale = 60
+skale = 200
 
 cube_matrix = np.array([
     [-0.5, -0.5, -0.5],  # 0: Bottom-back-left
@@ -212,6 +217,8 @@ def drawPolygons(polygons, screen):
     for polygon in polygons:
         pg.draw.polygon(screen, colors[n//2], polygon)
         n += 1
+        for p in polygon:
+            pg.draw.circle(screen, RED, (p[0], p[1]), 10)
 
 # Set up the display
 screen = pg.display.set_mode((screenWidth, screenHeight))
@@ -233,10 +240,6 @@ while running:
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
                 running = False
-            if event.key == pg.K_UP:
-                skale += 1
-            if event.key == pg.K_DOWN:
-                skale -= 1
     keys = pg.key.get_pressed()
     if keys[pg.K_a]:
         yaw += 0.05
@@ -246,23 +249,31 @@ while running:
         pitch += 0.05
     if keys[pg.K_w]:
         pitch -= 0.05
+    if keys[pg.K_UP]:
+        skale += 1
+    if keys[pg.K_DOWN]:
+        skale -= 1
+    if keys[pg.K_l]:
+        fov += 1
+    if keys[pg.K_k]:
+        fov -= 1
 
 
     # Update game state
-    
+    camera = [fov, 0, 0] 
     skale_cube = [skale, skale, skale] # skale for cube
     transformed_cube = transformMatrix(skale_cube, [roll, pitch, yaw], cube_matrix)
 
     all_polygons_sorted = sortPoltgons(polygonsFromCubeMatrix(transformed_cube), camera) # sort the polygons by distance from the camera
     all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera) # get the points on the plane
-    print(all_polygons_2D)
     centerObject(all_polygons_2D, screenWidth, screenHeight) # center the object on the screen
 
+    print("Camera:", camera)
 
     # Draw to the screen
     screen.fill(BLACK)
     
-    drawPolygons(all_polygons_2D, screen) # draw the polygons on the screen
+    drawPolygons(all_polygons_2D, screen) 
 
     # Flip the display
     pg.display.flip()
