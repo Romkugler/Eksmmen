@@ -39,12 +39,19 @@ screenHeight = 600
 black = (0, 0, 0)
 white = (255, 255, 255)
 red = (255, 0, 0)
+red2 = (200, 0, 0)
 green = (0, 255, 0)
+green2 = (0, 200, 0)
 blue = (0, 0, 255)
+blue2 = (0, 0, 200)
 yellow = (255, 255, 0)
+yellow2 = (200, 200, 0)
 puprle = (255, 0, 255)
+puprle2 = (200, 0, 200)
 orange = (255, 165, 0)
+orange2 = (200, 100, 0)
 colors = [red, green, blue, yellow, puprle, orange]
+colors2 = [red2, green2, blue2, yellow2, puprle2, orange2]
 
 class Polygon:
     def __init__(self, color, points):
@@ -77,17 +84,17 @@ cube_matrix = np.array([
 def polygonsFromCubeMatrix(cube_matrix, colors):
     return [
         Polygon(colors[0], [cube_matrix[0], cube_matrix[1], cube_matrix[4]]),  # Bottom
-        Polygon(colors[0], [cube_matrix[1], cube_matrix[5], cube_matrix[4]]),  # Bottom
+        Polygon(colors2[0], [cube_matrix[1], cube_matrix[5], cube_matrix[4]]),  # Bottom
         Polygon(colors[1], [cube_matrix[3], cube_matrix[2], cube_matrix[7]]),  # Top
-        Polygon(colors[1], [cube_matrix[6], cube_matrix[2], cube_matrix[7]]),  # Top
+        Polygon(colors2[1], [cube_matrix[6], cube_matrix[2], cube_matrix[7]]),  # Top
         Polygon(colors[2], [cube_matrix[0], cube_matrix[3], cube_matrix[4]]),  # Left
-        Polygon(colors[2], [cube_matrix[7], cube_matrix[3], cube_matrix[4]]),  # Left
+        Polygon(colors2[2], [cube_matrix[7], cube_matrix[3], cube_matrix[4]]),  # Left
         Polygon(colors[3], [cube_matrix[1], cube_matrix[2], cube_matrix[5]]),  # Right
-        Polygon(colors[3], [cube_matrix[6], cube_matrix[2], cube_matrix[5]]),  # Right
+        Polygon(colors2[3], [cube_matrix[6], cube_matrix[2], cube_matrix[5]]),  # Right
         Polygon(colors[4], [cube_matrix[4], cube_matrix[5], cube_matrix[6]]),  # Front
-        Polygon(colors[4], [cube_matrix[7], cube_matrix[4], cube_matrix[6]]),  # Front
+        Polygon(colors2[4], [cube_matrix[7], cube_matrix[4], cube_matrix[6]]),  # Front
         Polygon(colors[5], [cube_matrix[0], cube_matrix[1], cube_matrix[2]]),  # Back
-        Polygon(colors[5], [cube_matrix[3], cube_matrix[0], cube_matrix[2]])   # Back
+        Polygon(colors2[5], [cube_matrix[3], cube_matrix[0], cube_matrix[2]])   # Back
     ]
 
 def transformMatrix(skale, rotation, matrix): # skale = [x, y, z] rotation = [roll, pitch, yaw] 
@@ -98,21 +105,21 @@ def transformMatrix(skale, rotation, matrix): # skale = [x, y, z] rotation = [ro
         [0, 0, skale[2]]
     ])
 
-    # Rotation matrix (X-axis rotation) roll
+    # Rotation x matrix roll
     rotation_matrix_x = np.array([
         [1, 0, 0],
         [0, cos(rotation[0]), -sin(rotation[0])],
         [0, sin(rotation[0]), cos(rotation[0])]
     ])
 
-    # Rotation matrix (Y-axis rotation) pitch
+    # Rotation y matrix pitch
     rotation_matrix_y = np.array([
         [cos(rotation[1]), 0, sin(rotation[1])],
         [0, 1, 0],
         [-sin(rotation[1]), 0, cos(rotation[1])]
     ])
 
-    # Rotation matrix (Z-axis rotation) yaw
+    # Rotation z matrix yaw
     rotation_matrix_z = np.array([
         [cos(rotation[2]), -sin(rotation[2]), 0],
         [sin(rotation[2]), cos(rotation[2]), 0],
@@ -202,7 +209,6 @@ def drawPolygons(polygons, screen):
     for polygon in polygons:
         pg.draw.polygon(screen, polygon.color, polygon.points)
 
-
 # Set up the display
 screen = pg.display.set_mode((screenWidth, screenHeight))
 pg.display.set_caption("Pygame")
@@ -237,9 +243,9 @@ while running:
     if keys[pg.K_DOWN]:
         skale -= 1
     if keys[pg.K_l]:
-        fov += 1
+        fov += 10
     if keys[pg.K_k]:
-        fov -= 1
+        fov -= 10
 
 
     # Update game state
@@ -253,8 +259,8 @@ while running:
     all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
     
     centerObject(all_polygons_2D, screenWidth, screenHeight) 
-
-    print("Camera:", camera)
+    clock.tick()
+    print(clock.get_fps())    
 
     # Draw to the screen
     screen.fill(black)
