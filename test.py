@@ -1,6 +1,6 @@
 import pygame as pg
 import sys
-import numpy as np # For matrix operations
+import numpy as np 
 from math import sin, cos, sqrt
 import random
 
@@ -25,8 +25,6 @@ how to know what polygons to draw? Painter's algorithm
 Calculate the average Z values of each face.
 
 '''
-
-
 
 # Initialize Pygame
 pg.init()
@@ -81,19 +79,20 @@ cube_matrix = np.array([
     [-0.5,  0.5,  0.5],  # 7: Top-front-left
 ])
 
+
 def polygonsFromCubeMatrix(cube_matrix, colors):
     return [
-        Polygon(colors[0], [cube_matrix[0], cube_matrix[1], cube_matrix[4]]),  # Bottom
+        Polygon(colors[0],  [cube_matrix[0], cube_matrix[1], cube_matrix[4]]),  # Bottom
         Polygon(colors2[0], [cube_matrix[1], cube_matrix[5], cube_matrix[4]]),  # Bottom
-        Polygon(colors[1], [cube_matrix[3], cube_matrix[2], cube_matrix[7]]),  # Top
+        Polygon(colors[1],  [cube_matrix[3], cube_matrix[2], cube_matrix[7]]),  # Top
         Polygon(colors2[1], [cube_matrix[6], cube_matrix[2], cube_matrix[7]]),  # Top
-        Polygon(colors[2], [cube_matrix[0], cube_matrix[3], cube_matrix[4]]),  # Left
+        Polygon(colors[2],  [cube_matrix[0], cube_matrix[3], cube_matrix[4]]),  # Left
         Polygon(colors2[2], [cube_matrix[7], cube_matrix[3], cube_matrix[4]]),  # Left
-        Polygon(colors[3], [cube_matrix[1], cube_matrix[2], cube_matrix[5]]),  # Right
+        Polygon(colors[3],  [cube_matrix[1], cube_matrix[2], cube_matrix[5]]),  # Right
         Polygon(colors2[3], [cube_matrix[6], cube_matrix[2], cube_matrix[5]]),  # Right
-        Polygon(colors[4], [cube_matrix[4], cube_matrix[5], cube_matrix[6]]),  # Front
+        Polygon(colors[4],  [cube_matrix[4], cube_matrix[5], cube_matrix[6]]),  # Front
         Polygon(colors2[4], [cube_matrix[7], cube_matrix[4], cube_matrix[6]]),  # Front
-        Polygon(colors[5], [cube_matrix[0], cube_matrix[1], cube_matrix[2]]),  # Back
+        Polygon(colors[5],  [cube_matrix[0], cube_matrix[1], cube_matrix[2]]),  # Back
         Polygon(colors2[5], [cube_matrix[3], cube_matrix[0], cube_matrix[2]])   # Back
     ]
 
@@ -148,10 +147,10 @@ def avgPointInPolygon(polygon):
     return avg
 
 def distFromPointToPoint(p1, p2):
-    d = sqrt( (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2 + (p2[2]-p1[2])**2 )
+    d = sqrt((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2 + (p2[2]-p1[2])**2)
     return d
 
-def sortPoltgons(polygons, camera): 
+def sortPolygons(polygons, camera): 
     # sorting the polygons by the disdantes from the camera (Painter's algorithm)
     all_polygons = []
     sorted_polygons = []
@@ -159,11 +158,54 @@ def sortPoltgons(polygons, camera):
         centrum = avgPointInPolygon(polygon)
         dist = distFromPointToPoint(camera, centrum)
         all_polygons.append([dist, polygon])
-    all_polygons.sort(key=lambda x: x[0])  # Sort by distance
+    all_polygons.sort(key=lambda x: x[0])  # Sort by distance index 0
     for polygon in all_polygons:
         sorted_polygons.append(polygon[1])
     sorted_polygons.reverse() 
     return sorted_polygons
+
+def avgPointOnLine(point1, point2):
+    sum_x = point1[0]+point2[0]
+    sum_y = point1[1]+point2[1]
+    sum_z = point1[2]+point2[2]
+
+    avg = [sum_x/2, sum_y/2, sum_z/2]
+    return avg
+
+def middleOfLongestSide(polygon):
+    a = (polygon.points[0], polygon.points[1])
+    b = (polygon.points[1], polygon.points[2])
+    c = (polygon.points[2], polygon.points[0])
+
+    len_a = distFromPointToPoint(*a)
+    len_b = distFromPointToPoint(*b)
+    len_c = distFromPointToPoint(*c)
+
+    lens = [len_a, len_b, len_c]
+    lens.sort()
+    biggest_len = lens[-1]
+
+    if biggest_len == len_a:
+        return avgPointOnLine(*a)
+    if biggest_len == len_b:
+        return avgPointOnLine(*b)
+    if biggest_len == len_c:
+        return avgPointOnLine(*c)
+    else:
+        return None
+
+def sortPolygons2(polygons, camera):
+    all_polygons = []
+    sorted_polygons = []
+    for polygon in polygons:
+        hyp = middleOfLongestSide(polygon)
+        dist = distFromPointToPoint(camera, hyp)
+        all_polygons.append([dist, polygon])  
+    all_polygons.sort(key=lambda x: x[0])  # Sort by distance index 0
+    for polygon in all_polygons:
+        sorted_polygons.append(polygon[1])
+    sorted_polygons.reverse() 
+    return sorted_polygons 
 
 def getPointOnPlan(polygons, plan, pov):  #creates a list of points on a plane
     final = []
@@ -186,8 +228,8 @@ def getPointOnPlan(polygons, plan, pov):  #creates a list of points on a plane
 
             decimals = 2
             point_2D = [
-                round(y[0] + t * y[1], decimals),  # y coords
-                round(z[0] + t * z[1], decimals)   # z coords
+                round(y[0] + t * y[1], decimals),
+                round(z[0] + t * z[1], decimals)
             ]
             polygon_2D.append(point_2D) 
         final.append(Polygon(polygon.color, polygon_2D)) 
@@ -200,7 +242,7 @@ def centerObject(polygons, screenWidth = 800, screenHeight = 600):
     centerY = screenWidth / 2
     centerZ = screenHeight / 2
     for polygon in polygons:
-        for point in polygon.points:  # Iterate over each point in the polygon
+        for point in polygon.points: 
             point[0] += centerY
             point[1] += centerZ
     return polygons
@@ -255,12 +297,12 @@ while running:
 
     all_polygons = polygonsFromCubeMatrix(transformed_cube, colors)
 
-    all_polygons_sorted = sortPoltgons(all_polygons, camera)
+    all_polygons_sorted = sortPolygons2(all_polygons, camera)
     all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
     
     centerObject(all_polygons_2D, screenWidth, screenHeight) 
     clock.tick()
-    print(clock.get_fps())    
+    print("FPS: ", clock.get_fps())    
 
     # Draw to the screen
     screen.fill(black)
