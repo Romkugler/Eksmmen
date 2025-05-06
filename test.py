@@ -30,12 +30,14 @@ Calculate the average Z values of each face.
 pg.init()
 
 # Screen dimensions
+
 screenWidth = 800
 screenHeight = 600
 
 # Colors
 black = (0, 0, 0)
 white = (255, 255, 255)
+white2 = (200, 200, 200)
 red = (255, 0, 0)
 red2 = (200, 0, 0)
 green = (0, 255, 0)
@@ -48,8 +50,8 @@ puprle = (255, 0, 255)
 puprle2 = (200, 0, 200)
 orange = (255, 165, 0)
 orange2 = (200, 100, 0)
-colors = [red, green, blue, yellow, puprle, orange]
-colors2 = [red2, green2, blue2, yellow2, puprle2, orange2]
+colors = [red, orange, blue, green, white, yellow]
+colors2 = [red2, orange2, blue2, green2, white2, yellow2]
 
 class Polygon:
     def __init__(self, color, points):
@@ -66,7 +68,7 @@ camera = [fov, 0, 0] # koordinater for kamera [x, y, z]
 roll = 0 # rotation for x-axis
 pitch = 0 # rotation for y-axis
 yaw = 0 # rotation for z-axis
-skale = 200
+skale = 50
 
 cube_matrix = np.array([
     [-0.5, -0.5, -0.5],  # 0: Bottom-back-left
@@ -78,7 +80,16 @@ cube_matrix = np.array([
     [ 0.5,  0.5,  0.5],  # 6: Top-front-right
     [-0.5,  0.5,  0.5],  # 7: Top-front-left
 ])
-
+cube_matrix2 = np.array([
+    [-0.5, -0.5, -0.5],  # 0: Bottom-back-left
+    [ 0.5, -0.5, -0.5],  # 1: Bottom-back-right
+    [ 0.5,  0.5, -0.5],  # 2: Top-back-right
+    [-0.5,  0.5, -0.5],  # 3: Top-back-left
+    [-0.5, -0.5,  0.5],  # 4: Bottom-front-left
+    [ 0.5, -0.5,  0.5],  # 5: Bottom-front-right
+    [ 0.5,  0.5,  0.5],  # 6: Top-front-right
+    [-0.5,  0.5,  0.5],  # 7: Top-front-left
+])
 
 def polygonsFromCubeMatrix(cube_matrix, colors):
     return [
@@ -95,6 +106,14 @@ def polygonsFromCubeMatrix(cube_matrix, colors):
         Polygon(colors[5],  [cube_matrix[0], cube_matrix[1], cube_matrix[2]]),  # Back
         Polygon(colors2[5], [cube_matrix[3], cube_matrix[0], cube_matrix[2]])   # Back
     ]
+
+def movePointsXYZ(points, x, y, z):
+    for point in points:
+        point[0] += x
+        point[1] += y
+        point[2] += z
+
+movePointsXYZ(cube_matrix2,1,0,0)
 
 def transformMatrix(skale, rotation, matrix): # skale = [x, y, z] rotation = [roll, pitch, yaw] 
     # Skale matrix
@@ -228,8 +247,8 @@ def getPointOnPlan(polygons, plan, pov):  #creates a list of points on a plane
 
             decimals = 2
             point_2D = [
-                round(y[0] + t * y[1], decimals),
-                round(z[0] + t * z[1], decimals)
+                y[0] + t * y[1],
+                z[0] + t * z[1]
             ]
             polygon_2D.append(point_2D) 
         final.append(Polygon(polygon.color, polygon_2D)) 
@@ -280,6 +299,10 @@ while running:
         pitch += 0.05
     if keys[pg.K_w]:
         pitch -= 0.05
+    if keys[pg.K_q]:
+        roll += 0.05
+    if keys[pg.K_e]:
+        roll -= 0.05
     if keys[pg.K_UP]:
         skale += 1
     if keys[pg.K_DOWN]:
@@ -288,26 +311,40 @@ while running:
         fov += 10
     if keys[pg.K_k]:
         fov -= 10
-
-
+    if keys[pg.K_y]:
+        movePointsXYZ(cube_matrix, 0, -0.1, 0)
+    if keys[pg.K_h]:
+        movePointsXYZ(cube_matrix, 0, 0.1, 0)
+    
     # Update game state
+    screen.fill(black)
+
     camera = [fov, 0, 0] 
     skale_cube = [skale, skale, skale] # skale for cube
     transformed_cube = transformMatrix(skale_cube, [roll, pitch, yaw], cube_matrix)
-
     all_polygons = polygonsFromCubeMatrix(transformed_cube, colors)
-
     all_polygons_sorted = sortPolygons2(all_polygons, camera)
     all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
-    
     centerObject(all_polygons_2D, screenWidth, screenHeight) 
+    drawPolygons(all_polygons_2D, screen) 
+
+
+    skale_cube = [skale, skale, skale] # skale for cube
+    transformed_cube = transformMatrix(skale_cube, [roll, pitch, yaw], cube_matrix2)
+    all_polygons = polygonsFromCubeMatrix(transformed_cube, colors)
+    all_polygons_sorted = sortPolygons2(all_polygons, camera)
+    all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
+    centerObject(all_polygons_2D, screenWidth, screenHeight) 
+    drawPolygons(all_polygons_2D, screen) 
+
+
     clock.tick()
-    print("FPS: ", clock.get_fps())    
+    #print("FPS: ", clock.get_fps())    
 
     # Draw to the screen
-    screen.fill(black)
+    #screen.fill(black)
     
-    drawPolygons(all_polygons_2D, screen) 
+    #drawPolygons(all_polygons_2D, screen) 
 
     # Flip the display
     pg.display.flip()
