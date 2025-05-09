@@ -5,14 +5,12 @@
 \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{init}\PYG{p}{(}\PYG{p}{)}
 \PYG{n}{screenWidth} \PYG{o}{=} \PYG{l+m+mi}{800}
 \PYG{n}{screenHeight} \PYG{o}{=} \PYG{l+m+mi}{600}
-
 \PYG{n}{black} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
 
 \PYG{n}{screen} \PYG{o}{=} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{display}\PYG{o}{.}\PYG{n}{set\PYGZus{}mode}\PYG{p}{(}\PYG{p}{(}\PYG{n}{screenWidth}\PYG{p}{,} \PYG{n}{screenHeight}\PYG{p}{)}\PYG{p}{)}
 \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{display}\PYG{o}{.}\PYG{n}{set\PYGZus{}caption}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Pygame}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
 \PYG{n}{clock} \PYG{o}{=} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{time}\PYG{o}{.}\PYG{n}{Clock}\PYG{p}{(}\PYG{p}{)}
 \PYG{n}{FPS} \PYG{o}{=} \PYG{l+m+mi}{60}
-
 \PYG{c+c1}{\PYGZsh{} game loop}
 \PYG{n}{running} \PYG{o}{=} \PYG{k+kc}{True}
 \PYG{k}{while} \PYG{n}{running}\PYG{p}{:}

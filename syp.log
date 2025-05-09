@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.19)  9 MAY 2025 19:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.19)  9 MAY 2025 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -374,94 +374,84 @@ Package hyperref Info: Link coloring OFF on input line 18.
 \tf@toc=\write5
 \openout5 = `syp.toc'.
 
-<blender.jpeg, id=55, 692.5875pt x 376.40625pt>
-File: blender.jpeg Graphic file (type jpg)
-<use blender.jpeg>
-Package pdftex.def Info: blender.jpeg  used on input line 32.
-(pdftex.def)             Requested size: 345.0pt x 187.50195pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<program.png, id=57, 591.71063pt x 434.37282pt>
-File: program.png Graphic file (type png)
-<use program.png>
-Package pdftex.def Info: program.png  used on input line 41.
-(pdftex.def)             Requested size: 241.49895pt x 177.27876pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 
 [1
 
 {c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<3dpro.png, id=74, 1284.8pt x 963.6pt>
-File: 3dpro.png Graphic file (type png)
-<use 3dpro.png>
-Package pdftex.def Info: 3dpro.png  used on input line 52.
-(pdftex.def)             Requested size: 241.49895pt x 181.11565pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<plan.png, id=76, 660.96938pt x 453.19313pt>
-File: plan.png Graphic file (type png)
-<use plan.png>
-Package pdftex.def Info: plan.png  used on input line 73.
-(pdftex.def)             Requested size: 241.49895pt x 165.58353pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+<blender.jpeg, id=66, 692.5875pt x 376.40625pt>
+File: blender.jpeg Graphic file (type jpg)
+<use blender.jpeg>
+Package pdftex.def Info: blender.jpeg  used on input line 33.
+(pdftex.def)             Requested size: 276.00105pt x 150.0027pt.
+<program.png, id=68, 591.71063pt x 434.37282pt>
+File: program.png Graphic file (type png)
+<use program.png>
+Package pdftex.def Info: program.png  used on input line 42.
+(pdftex.def)             Requested size: 241.49895pt x 177.27876pt.
 
 
 [2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.85 
-      <./blender.jpeg>]
+l.50 
+     
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.50 
+      <./blender.jpeg> <./program.png>]
+<3dpro.png, id=79, 1284.8pt x 963.6pt>
+File: 3dpro.png Graphic file (type png)
+<use 3dpro.png>
+Package pdftex.def Info: 3dpro.png  used on input line 53.
+(pdftex.def)             Requested size: 241.49895pt x 181.11565pt.
+<plan.png, id=81, 660.96938pt x 453.19313pt>
+File: plan.png Graphic file (type png)
+<use plan.png>
+Package pdftex.def Info: plan.png  used on input line 74.
+(pdftex.def)             Requested size: 241.49895pt x 165.58353pt.
+
+
+[3
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.77 
+      <./3dpro.png>]
 \pydata@fh@_F19FE81CC92B1EFCD1DD6A097AB17B05.data.minted=\write6
 \openout6 = `_F19FE81CC92B1EFCD1DD6A097AB17B05.data.minted'.
 
-runsystem(latexminted config  --timestamp 20250509194617 F19FE81CC92B1EFCD1DD6A097AB17B05)...executed safely (allowed).
+runsystem(latexminted config  --timestamp 20250509222417 F19FE81CC92B1EFCD1DD6A097AB17B05)...executed safely (allowed).
 
  (./_F19FE81CC92B1EFCD1DD6A097AB17B05.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20250509194617 F19FE81CC92B1EFCD1DD6A097AB17B05)...executed safely (allowed).
+runsystem(latexminted cleanconfig  --timestamp 20250509222417 F19FE81CC92B1EFCD1DD6A097AB17B05)...executed safely (allowed).
 
- (./_minted/default.style.minted) (./_minted/D9A650A6D9145B5CC1D2FE970437319B.highlight.minted
+ (./_minted/default.style.minted) (./_minted/0045DD1CE53ACD4737E2AE90ED5D1D4D.highlight.minted
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
 )
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-[3
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.136 \end{document}
-                     <./program.png>]
-
 [4
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.136 \end{document}
-                    
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.136 \end{document}
-                     <./3dpro.png> <./plan.png>]
+l.120 
+       <./plan.png>] (./_minted/3CE63F3E0678A26775B972D695491652.highlight.minted)
 
 [5
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.136 \end{document}
+l.151 
+      ]
+
+[6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.171 \end{document}
                     ] (./syp.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
@@ -471,18 +461,18 @@ Package rerunfilecheck Info: File `syp.out' has not changed.
 (rerunfilecheck)             Checksum: 2D5344D5312EEBE277439B7234CC6D4F;1044.
  ) 
 Here is how much of TeX's memory you used:
- 14200 strings out of 473200
- 272929 string characters out of 5720278
- 785267 words of memory out of 5000000
- 37261 multiletter control sequences out of 15000+600000
+ 14207 strings out of 473200
+ 273240 string characters out of 5720278
+ 785321 words of memory out of 5000000
+ 37263 multiletter control sequences out of 15000+600000
  564556 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,513b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,545b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on syp.pdf (5 pages, 323037 bytes).
+Output written on syp.pdf (6 pages, 330675 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
- 22 named destinations out of 1000 (max. 500000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

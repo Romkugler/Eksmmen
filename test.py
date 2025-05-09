@@ -205,19 +205,19 @@ def sortPolygons2(polygons, camera):
     sorted_polygons.reverse() 
     return sorted_polygons 
 
-def getPointOnPlan(polygons, plan, pov):  #creates a list of points on a plane
+def getPointOnPlan(polygons, plan, pov):
     final = []
     for polygon in polygons:
         polygon_2D = []  
         for point in polygon.points:
             r = []
             for j in range(len(point)):
-                a = float(point[j]) - pov[j] 
+                a = point[j] - pov[j] 
                 r.append(a)
             
-            x = [float(pov[0]), r[0]]
-            y = [float(pov[1]), r[1]]
-            z = [float(pov[2]), r[2]]
+            x = [pov[0], r[0]]
+            y = [pov[1], r[1]]
+            z = [pov[2], r[2]]
 
             ligning_num = plan[0]*x[0] + plan[1]*y[0] + plan[2]*z[0] + plan[3]
             ligning_t = plan[0]*x[1] + plan[1]*y[1] + plan[2]*z[1]

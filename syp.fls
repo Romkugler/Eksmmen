@@ -173,6 +173,7 @@ INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 OUTPUT syp.toc
+INPUT c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT ./blender.jpeg
 INPUT ./blender.jpeg
@@ -185,7 +186,6 @@ INPUT ./program.png
 INPUT ./program.png
 INPUT ./program.png
 INPUT ./program.png
-INPUT c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT ./3dpro.png
 INPUT ./3dpro.png
 INPUT ./3dpro.png
@@ -205,10 +205,13 @@ INPUT ./_minted/_F19FE81CC92B1EFCD1DD6A097AB17B05.index.minted
 INPUT ./_minted/default.style.minted
 INPUT ./_minted/default.style.minted
 INPUT _minted/default.style.minted
-INPUT ./_minted/D9A650A6D9145B5CC1D2FE970437319B.highlight.minted
-INPUT ./_minted/D9A650A6D9145B5CC1D2FE970437319B.highlight.minted
-INPUT _minted/D9A650A6D9145B5CC1D2FE970437319B.highlight.minted
+INPUT ./_minted/0045DD1CE53ACD4737E2AE90ED5D1D4D.highlight.minted
+INPUT ./_minted/0045DD1CE53ACD4737E2AE90ED5D1D4D.highlight.minted
+INPUT _minted/0045DD1CE53ACD4737E2AE90ED5D1D4D.highlight.minted
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
+INPUT ./_minted/3CE63F3E0678A26775B972D695491652.highlight.minted
+INPUT ./_minted/3CE63F3E0678A26775B972D695491652.highlight.minted
+INPUT _minted/3CE63F3E0678A26775B972D695491652.highlight.minted
 INPUT syp.aux
 INPUT ./syp.out
 INPUT ./syp.out
