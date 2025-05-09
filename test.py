@@ -26,15 +26,11 @@ Calculate the average Z values of each face.
 
 '''
 
-# Initialize Pygame
 pg.init()
-
-# Screen dimensions
 
 screenWidth = 800
 screenHeight = 600
 
-# Colors
 black = (0, 0, 0)
 white = (255, 255, 255)
 white2 = (200, 200, 200)
@@ -61,26 +57,15 @@ class Polygon:
     def __str__(self):
         return f"{self.color}({self.points})"
 
-# Variables for the cube
 plan = [1, 0, 0, 0] # lignigen for plan [a, b, c, k] ax+by+cz+k=0
 fov = 500
 camera = [fov, 0, 0] # koordinater for kamera [x, y, z]
 roll = 0 # rotation for x-axis
 pitch = 0 # rotation for y-axis
 yaw = 0 # rotation for z-axis
-skale = 50
+skale = 200
 
 cube_matrix = np.array([
-    [-0.5, -0.5, -0.5],  # 0: Bottom-back-left
-    [ 0.5, -0.5, -0.5],  # 1: Bottom-back-right
-    [ 0.5,  0.5, -0.5],  # 2: Top-back-right
-    [-0.5,  0.5, -0.5],  # 3: Top-back-left
-    [-0.5, -0.5,  0.5],  # 4: Bottom-front-left
-    [ 0.5, -0.5,  0.5],  # 5: Bottom-front-right
-    [ 0.5,  0.5,  0.5],  # 6: Top-front-right
-    [-0.5,  0.5,  0.5],  # 7: Top-front-left
-])
-cube_matrix2 = np.array([
     [-0.5, -0.5, -0.5],  # 0: Bottom-back-left
     [ 0.5, -0.5, -0.5],  # 1: Bottom-back-right
     [ 0.5,  0.5, -0.5],  # 2: Top-back-right
@@ -93,18 +78,18 @@ cube_matrix2 = np.array([
 
 def polygonsFromCubeMatrix(cube_matrix, colors):
     return [
-        Polygon(colors[0],  [cube_matrix[0], cube_matrix[1], cube_matrix[4]]),  # Bottom
-        Polygon(colors2[0], [cube_matrix[1], cube_matrix[5], cube_matrix[4]]),  # Bottom
-        Polygon(colors[1],  [cube_matrix[3], cube_matrix[2], cube_matrix[7]]),  # Top
-        Polygon(colors2[1], [cube_matrix[6], cube_matrix[2], cube_matrix[7]]),  # Top
-        Polygon(colors[2],  [cube_matrix[0], cube_matrix[3], cube_matrix[4]]),  # Left
-        Polygon(colors2[2], [cube_matrix[7], cube_matrix[3], cube_matrix[4]]),  # Left
-        Polygon(colors[3],  [cube_matrix[1], cube_matrix[2], cube_matrix[5]]),  # Right
-        Polygon(colors2[3], [cube_matrix[6], cube_matrix[2], cube_matrix[5]]),  # Right
-        Polygon(colors[4],  [cube_matrix[4], cube_matrix[5], cube_matrix[6]]),  # Front
-        Polygon(colors2[4], [cube_matrix[7], cube_matrix[4], cube_matrix[6]]),  # Front
-        Polygon(colors[5],  [cube_matrix[0], cube_matrix[1], cube_matrix[2]]),  # Back
-        Polygon(colors2[5], [cube_matrix[3], cube_matrix[0], cube_matrix[2]])   # Back
+        Polygon(colors2[0],  [cube_matrix[0], cube_matrix[1], cube_matrix[4]]), # Bottom
+        Polygon(colors[0], [cube_matrix[1], cube_matrix[5], cube_matrix[4]]),   # Bottom
+        Polygon(colors2[1],  [cube_matrix[3], cube_matrix[2], cube_matrix[7]]), # Top
+        Polygon(colors[1], [cube_matrix[6], cube_matrix[2], cube_matrix[7]]),   # Top
+        Polygon(colors2[2],  [cube_matrix[0], cube_matrix[3], cube_matrix[4]]), # Left
+        Polygon(colors[2], [cube_matrix[7], cube_matrix[3], cube_matrix[4]]),   # Left
+        Polygon(colors2[3],  [cube_matrix[1], cube_matrix[2], cube_matrix[5]]), # Right
+        Polygon(colors[3], [cube_matrix[6], cube_matrix[2], cube_matrix[5]]),   # Right
+        Polygon(colors2[4],  [cube_matrix[4], cube_matrix[5], cube_matrix[6]]), # Front
+        Polygon(colors[4], [cube_matrix[7], cube_matrix[4], cube_matrix[6]]),   # Front
+        Polygon(colors2[5],  [cube_matrix[0], cube_matrix[1], cube_matrix[2]]), # Back
+        Polygon(colors[5], [cube_matrix[3], cube_matrix[0], cube_matrix[2]])    # Back
     ]
 
 def movePointsXYZ(points, x, y, z):
@@ -113,7 +98,6 @@ def movePointsXYZ(points, x, y, z):
         point[1] += y
         point[2] += z
 
-movePointsXYZ(cube_matrix2,1,0,0)
 
 def transformMatrix(skale, rotation, matrix): # skale = [x, y, z] rotation = [roll, pitch, yaw] 
     # Skale matrix
@@ -122,31 +106,26 @@ def transformMatrix(skale, rotation, matrix): # skale = [x, y, z] rotation = [ro
         [0, skale[1], 0],
         [0, 0, skale[2]]
     ])
-
     # Rotation x matrix roll
     rotation_matrix_x = np.array([
         [1, 0, 0],
         [0, cos(rotation[0]), -sin(rotation[0])],
         [0, sin(rotation[0]), cos(rotation[0])]
     ])
-
     # Rotation y matrix pitch
     rotation_matrix_y = np.array([
         [cos(rotation[1]), 0, sin(rotation[1])],
         [0, 1, 0],
         [-sin(rotation[1]), 0, cos(rotation[1])]
     ])
-
     # Rotation z matrix yaw
     rotation_matrix_z = np.array([
         [cos(rotation[2]), -sin(rotation[2]), 0],
         [sin(rotation[2]), cos(rotation[2]), 0],
         [0, 0, 1]
     ])
-
     # Translation matrix
     translation_matrix = scale_matrix.dot((rotation_matrix_z.dot(rotation_matrix_y.dot(rotation_matrix_x))))
-
     # Translation matrix on the matrix given
     matrix = np.array(matrix)
     transformed_matrix = matrix.dot(translation_matrix)
@@ -245,7 +224,6 @@ def getPointOnPlan(polygons, plan, pov):  #creates a list of points on a plane
 
             t = (-(ligning_num))/ligning_t
 
-            decimals = 2
             point_2D = [
                 y[0] + t * y[1],
                 z[0] + t * z[1]
@@ -269,12 +247,13 @@ def centerObject(polygons, screenWidth = 800, screenHeight = 600):
 def drawPolygons(polygons, screen):
     for polygon in polygons:
         pg.draw.polygon(screen, polygon.color, polygon.points)
+        for point in polygon.points:
+            pg.draw.circle(screen, black, (int(point[0]), int(point[1])), 10)
+            pg.draw.circle(screen, blue, (int(point[0]), int(point[1])), 8) 
 
-# Set up the display
 screen = pg.display.set_mode((screenWidth, screenHeight))
 pg.display.set_caption("Pygame")
 
-# Clock to control the frame rate
 clock = pg.time.Clock()
 FPS = 60
 
@@ -283,7 +262,7 @@ running = True
 while running:
     clock.tick(FPS)
 
-    # Event handling
+    # Events
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
@@ -316,9 +295,7 @@ while running:
     if keys[pg.K_h]:
         movePointsXYZ(cube_matrix, 0, 0.1, 0)
     
-    # Update game state
-    screen.fill(black)
-
+    # Updates
     camera = [fov, 0, 0] 
     skale_cube = [skale, skale, skale] # skale for cube
     transformed_cube = transformMatrix(skale_cube, [roll, pitch, yaw], cube_matrix)
@@ -326,29 +303,15 @@ while running:
     all_polygons_sorted = sortPolygons2(all_polygons, camera)
     all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
     centerObject(all_polygons_2D, screenWidth, screenHeight) 
-    drawPolygons(all_polygons_2D, screen) 
-
-
-    skale_cube = [skale, skale, skale] # skale for cube
-    transformed_cube = transformMatrix(skale_cube, [roll, pitch, yaw], cube_matrix2)
-    all_polygons = polygonsFromCubeMatrix(transformed_cube, colors)
-    all_polygons_sorted = sortPolygons2(all_polygons, camera)
-    all_polygons_2D = getPointOnPlan(all_polygons_sorted, plan, camera)
-    centerObject(all_polygons_2D, screenWidth, screenHeight) 
-    drawPolygons(all_polygons_2D, screen) 
-
 
     clock.tick()
     #print("FPS: ", clock.get_fps())    
 
-    # Draw to the screen
-    #screen.fill(black)
-    
-    #drawPolygons(all_polygons_2D, screen) 
+    # Drawing
+    screen.fill(black)
+    drawPolygons(all_polygons_2D, screen) 
 
-    # Flip the display
+    # flip display
     pg.display.flip()
-
-# Clean up
 pg.quit()
 sys.exit()

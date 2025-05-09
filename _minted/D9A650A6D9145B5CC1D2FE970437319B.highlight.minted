@@ -1,0 +1,32 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pygame}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{sys}
+
+\PYG{n}{pygame}\PYG{o}{.}\PYG{n}{init}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{screenWidth} \PYG{o}{=} \PYG{l+m+mi}{800}
+\PYG{n}{screenHeight} \PYG{o}{=} \PYG{l+m+mi}{600}
+
+\PYG{n}{black} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
+
+\PYG{n}{screen} \PYG{o}{=} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{display}\PYG{o}{.}\PYG{n}{set\PYGZus{}mode}\PYG{p}{(}\PYG{p}{(}\PYG{n}{screenWidth}\PYG{p}{,} \PYG{n}{screenHeight}\PYG{p}{)}\PYG{p}{)}
+\PYG{n}{pygame}\PYG{o}{.}\PYG{n}{display}\PYG{o}{.}\PYG{n}{set\PYGZus{}caption}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Pygame}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{clock} \PYG{o}{=} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{time}\PYG{o}{.}\PYG{n}{Clock}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{FPS} \PYG{o}{=} \PYG{l+m+mi}{60}
+
+\PYG{c+c1}{\PYGZsh{} game loop}
+\PYG{n}{running} \PYG{o}{=} \PYG{k+kc}{True}
+\PYG{k}{while} \PYG{n}{running}\PYG{p}{:}
+    \PYG{n}{clock}\PYG{o}{.}\PYG{n}{tick}\PYG{p}{(}\PYG{n}{FPS}\PYG{p}{)}
+    \PYG{c+c1}{\PYGZsh{} inputs}
+    \PYG{k}{for} \PYG{n}{event} \PYG{o+ow}{in} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{event}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{p}{)}\PYG{p}{:}
+        \PYG{k}{if} \PYG{n}{event}\PYG{o}{.}\PYG{n}{type} \PYG{o}{==} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{QUIT}\PYG{p}{:}
+            \PYG{n}{running} \PYG{o}{=} \PYG{k+kc}{False}
+        \PYG{k}{elif} \PYG{n}{event}\PYG{o}{.}\PYG{n}{type} \PYG{o}{==} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{KEYDOWN}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{event}\PYG{o}{.}\PYG{n}{key} \PYG{o}{==} \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{K\PYGZus{}ESCAPE}\PYG{p}{:}
+                \PYG{n}{running} \PYG{o}{=} \PYG{k+kc}{False}
+    \PYG{c+c1}{\PYGZsh{} updates}
+
+    \PYG{c+c1}{\PYGZsh{} draw}
+    \PYG{n}{screen}\PYG{o}{.}\PYG{n}{fill}\PYG{p}{(}\PYG{n}{black}\PYG{p}{)}
+    \PYG{n}{pygame}\PYG{o}{.}\PYG{n}{display}\PYG{o}{.}\PYG{n}{flip}\PYG{p}{(}\PYG{p}{)}
+\end{MintedVerbatim}

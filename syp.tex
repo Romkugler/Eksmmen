@@ -1,4 +1,4 @@
-documentclass{article}
+\documentclass{article}
 
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -6,14 +6,14 @@ documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{minted}
 
-\title{3D engine med pygame}
+\title{Simple 3D engine med pygame}
 
 \author{Christian Linde Ahrnkiel\\
-Synopsis Prog B Ekamans projekt\\
+Synopsis Prog B eksamensprojekt\\
 Odense Tekniske Gymnasium
 }
 
-\date{28. feburar 2025}
+\date{9. Maj 2025}
 
 \begin{document}
 
@@ -21,9 +21,115 @@ Odense Tekniske Gymnasium
 \tableofcontents
 
 \section{Indledning}
-    \subsection{Formål}
-    
-\section{Spiller bevægelse}
+\subsection{Formål}
+Formålet med dette projekt er at lave en simple 3D engine.
+En 3D engine er et program der kan vise 3D objekter på en 2D skærm. 
+Det er en vigtig del af mange computerspil og grafiske applikationer.
+Et eksepmle på et program som har en 3D engine er blender. Det kan ses på figur \ref{fig:blender}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\linewidth]{blender.jpeg}
+\caption{\label{fig:blender}Billede af 3D modellerings programmer blender.}
+\end{figure}
+
+I dette projekt har jeg lavet en simpel 3D engine i python med pygame biblioteket. 
+Man kan se det endlige program \texttt{sigma()} på figur \ref{fig:program}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{program.png}
+\caption{\label{fig:program}Billede af mit program.}
+\end{figure}
+
+\section{3D projektion}
+3D projektion er en metode til at vise 3D objekter på en 2D skærm. 
+Der findes mange forskellige metoder til at lave 3D projektion.
+Se figur \ref{fig:3dpro} for en Illustration af de forskellige 3D projektion.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{3dpro.png}
+\caption{\label{fig:3dpro}Illustration af de forskellige 3D projektion fra wikipedia.org.}
+\end{figure}
+
+Den som jeg har valgt at bruge er den som hedder perspective projection.
+Perspective projection fungere ved at man har et punkt i 3D rummet, som kan forstårs som et kamera.
+Der er en plan, som kan forstårs som en skærm.
+Og så er der et punkt i 3D rummet, som er en del at et objekt.
+Man kan så tegne en linje fra kameraet til punktet på objektet, og så finde ud af hvor den skærer skærmen.
+Der vil man så tegne punktet på skærmen.
+
+På figur \ref{fig:plan} kan man se perspective projection oppe fra som 2D.
+Der er et punkt, som hedder $Kamera$ som er kameraet. 
+Der er en plan, som er den sorte linge, det er skærmen.
+Der er et punkt, som hedder $p_{c}$ som er et punkt på objektet, og i dette tilfælle er en firekant.
+Man kan se at der er en linje fra kameraet til punktet $p_{c}$.
+Der hvor linjen skærer skærmen, der er punktet $p_{s}$.
+Det er sådan metoden fungere.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{plan.png}
+\caption{\label{fig:plan}Illustration af 3D perspective projection set oppe fra som 2D.}
+\end{figure}
+
+\section{Pygame}
+Pygame er et bibliotek til python, som gør det muligt at lave grafiske applikationer såsom spil.
+Pygame laver et popup vindue, og man tenge figurer og billeder i vinduet.
+Pygame har noget som hedder et game loop. Et game loop er et loop som opdaterer progammet hele tiden.
+Den start med at først håndterer input fx. tastatur eller mus.
+Så opdaterer spillets tilstand og logikken fx. bevægelse af objekter.
+Og til sidst tegner det objekterne på skærmen.
+Et meget simpelt game loop kan ses i koden på figur \ref{fig:pgkode}.
+
+\begin{figure}[h]
+\begin{minted}[xleftmargin=20pt,linenos]{python}
+import pygame
+import sys
+
+pygame.init()
+screenWidth = 800
+screenHeight = 600
+
+black = (0, 0, 0)
+
+screen = pygame.display.set_mode((screenWidth, screenHeight))
+pygame.display.set_caption("Pygame")
+clock = pygame.time.Clock()
+FPS = 60
+
+# game loop
+running = True
+while running:
+    clock.tick(FPS)
+    # inputs
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+    # updates
+
+    # draw
+    screen.fill(black)
+    pygame.display.flip()
+\end{minted}
+\caption{\label{fig:pgkode}Kode for meget simpelt game loop.}
+\end{figure}
+
+\section{3D punkt til 2D punkt}
+For at kunne være i stand til at tegne 3D objekter, på en 2D skærm, 
+startet jeg med  
+
+\section{Polygoner}
+
+\section{Painters algorithm}
+
+\section{Egen algorithmme}
+
+\section{Kasser}
 
 \section{Konklusion}
 
