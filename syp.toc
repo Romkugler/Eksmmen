@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Indledning}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Formål}{2}{subsection.1.1}%
+\contentsline {section}{\numberline {2}3D projektion}{3}{section.2}%
+\contentsline {section}{\numberline {3}Pygame}{4}{section.3}%
+\contentsline {section}{\numberline {4}3D punkt til 2D punkt}{5}{section.4}%
+\contentsline {section}{\numberline {5}Polygoner}{7}{section.5}%
+\contentsline {section}{\numberline {6}Painters algorithm}{7}{section.6}%
+\contentsline {section}{\numberline {7}Egen algorithmme}{7}{section.7}%
+\contentsline {section}{\numberline {8}Kasser}{7}{section.8}%
+\contentsline {section}{\numberline {9}Konklusion}{7}{section.9}%

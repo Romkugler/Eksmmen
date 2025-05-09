@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1746826533.58551 "c:/Users/clatr/OneDrive/Skrivebord/SkoleProg/Eksmmen/syp.tex" "syp.pdf" "syp" 1746826544.83293 0
+["pdflatex"] 1746826966.80956 "c:/Users/clatr/OneDrive/Skrivebord/SkoleProg/Eksmmen/syp.tex" "syp.pdf" "syp" 1746826985.12799 0
   "3dpro.png" 1746825672 156832 92a0f66eb1450f95d648c6f730570c85 ""
   "8dots.png" 1746825709 6013 416a36a77a960815c95b56485b6a59ca ""
   "_minted/0045DD1CE53ACD4737E2AE90ED5D1D4D.highlight.minted" 1746825672 2070 23cab698acf803666bcf364ea221f811 ""
@@ -7,7 +7,7 @@
   "_minted/_F19FE81CC92B1EFCD1DD6A097AB17B05.index.minted" 1746826182 328 be9f9f00339f3d72beb4042bb1a2adf7 ""
   "_minted/default.style.minted" 1746825672 6526 e1fb43a91491f41b33310478eee48cdb ""
   "blender.jpeg" 1746825672 54980 09f47fa12b1f9d879666e2e31fc02391 ""
-  "c:/Users/clatr/OneDrive/Skrivebord/SkoleProg/Eksmmen/syp.tex" 1746826532 6978 9733c35c2c84057858e279785d46b6ae ""
+  "c:/Users/clatr/OneDrive/Skrivebord/SkoleProg/Eksmmen/syp.tex" 1746826964 7085 3523ed16873a3cd455f86bbb745b1e77 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1739877255 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1739870938 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1739870938 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -105,10 +105,10 @@
   "c:/texlive/2024/texmf.cnf" 1739953165 713 e69b156964470283e0530f5060668171 ""
   "plan.png" 1746825672 25762 cfd712ef092045d1168dd917126732bd ""
   "program.png" 1746825672 8550 0a0a5cec31c629e57df93160e4e257b2 ""
-  "syp.aux" 1746826544 3010 611d5548521b2ffff5c376e73467858c "pdflatex"
-  "syp.out" 1746826544 1044 2d5344d5312eebe277439b7234cc6d4f "pdflatex"
-  "syp.tex" 1746826532 6978 9733c35c2c84057858e279785d46b6ae ""
-  "syp.toc" 1746826544 686 8525f1c0348a14ba0ae71a24e5597a98 "pdflatex"
+  "syp.aux" 1746826984 3010 611d5548521b2ffff5c376e73467858c "pdflatex"
+  "syp.out" 1746826984 1044 2d5344d5312eebe277439b7234cc6d4f "pdflatex"
+  "syp.tex" 1746826964 7085 3523ed16873a3cd455f86bbb745b1e77 ""
+  "syp.toc" 1746826984 686 8525f1c0348a14ba0ae71a24e5597a98 "pdflatex"
   (generated)
   "syp.aux"
   "syp.log"
