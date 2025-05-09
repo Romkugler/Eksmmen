@@ -151,7 +151,7 @@ def getPointOnPlan(fig,plan,pov):
 \end{figure}
 
 For at ikke at gå for meget i dybden med matematikken, så vil jeg gå lidt overfladisk om det.
-På linje 3 laver jeg et for loop som går igennem alle punkter i listen \texttt{fig}, så et punkt er \texttt{fig[i]}.
+På linje 3 laver jeg et for loop som går igennem alle punkter i listen \texttt{fig}, så et punkt er \texttt{fig[i]}|.
 Derefter på linje 4, 5 og 6 laver jeg en retningsvektor \texttt{r} fra \texttt{pov} til \texttt{fig[i]} for at lave en linje mellem dem.
 Så på linje 7, 8 og 9 opsætter jeg en liste \texttt{x}, \texttt{y} og \texttt{z} som er \texttt{pov[0]} og \texttt{r[0]} for at løse en ligning mellem planen og og linjen.
 Bageefter på linje 10, 11 og 12 løser jeg en ligning for $t$. Det er hvor langt henne linjen skærer planen.
@@ -163,9 +163,12 @@ Så får man 8 punkter som er kanterne af en kasse. Det kan ses på figur \ref{f
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{8dots.png}
-\caption{\label{fig:8dots}Illustration af 3D perspective projection set oppe fra som 2D.}
+\caption{\label{fig:8dots}Billede af 8 punkter af en kasse.}
 \end{figure}    
+
 \section{Polygoner}
+Nu er det tid til at få sider på kassen. Til det vil jeg bruge 3 trekantet polygoner. 
+Pygame har en funktion som hedder \texttt{draw.polygon} som kan tegne polygoner ud fra en liste af punkter.
 
 
 \section{Painters algorithm}
