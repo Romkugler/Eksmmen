@@ -212,6 +212,11 @@ INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm
 INPUT ./_minted/3CE63F3E0678A26775B972D695491652.highlight.minted
 INPUT ./_minted/3CE63F3E0678A26775B972D695491652.highlight.minted
 INPUT _minted/3CE63F3E0678A26775B972D695491652.highlight.minted
+INPUT ./8dots.png
+INPUT ./8dots.png
+INPUT ./8dots.png
+INPUT ./8dots.png
+INPUT ./8dots.png
 INPUT syp.aux
 INPUT ./syp.out
 INPUT ./syp.out

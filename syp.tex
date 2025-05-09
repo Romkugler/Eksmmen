@@ -18,6 +18,7 @@ Odense Tekniske Gymnasium
 \begin{document}
 
 \maketitle
+\renewcommand{\contentsname}{Indholdsfortegnelse}
 \tableofcontents
 
 \newpage
@@ -146,7 +147,7 @@ def getPointOnPlan(fig,plan,pov):
         final.append([y[0]+t*y[1], z[0]+t*z[1]])
     return final
 \end{minted}
-\caption{\label{fig:getPointOnPlan}Kode for meget simpelt game loop.}
+\caption{\label{fig:getPointOnPlan}Kode for \texttt{getPointOnPlan}.}
 \end{figure}
 
 For at ikke at gå for meget i dybden med matematikken, så vil jeg gå lidt overfladisk om det.
@@ -156,7 +157,14 @@ Så på linje 7, 8 og 9 opsætter jeg en liste \texttt{x}, \texttt{y} og \texttt
 Bageefter på linje 10, 11 og 12 løser jeg en ligning for $t$. Det er hvor langt henne linjen skærer planen.
 Til sidst på linje 13 tilføjer jeg $y$ og $z$ koordinaterne til listen \texttt{final} som er en liste af 2D punkter.
 
-
+Hvis man så giver \texttt{getPointOnPlan} en liste af 3D punkter som laver en kasse, 
+og tegner cirekler ved de 2D punkter som den returnere.
+Så får man 8 punkter som er kanterne af en kasse. Det kan ses på figur \ref{fig:8dots}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{8dots.png}
+\caption{\label{fig:8dots}Illustration af 3D perspective projection set oppe fra som 2D.}
+\end{figure}    
 \section{Polygoner}
 
 
